@@ -3,28 +3,15 @@ html
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
-    title Hello World
-
+    title Presentation
     link(rel='stylesheet', type='text/css', href='build/build.css')
 
   body
-
     article
-
-      section
-        h1 Hello World
-
-      section
-        h2 Keyboard Interaction
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a>
-
-      section
-        h2 Touch Interaction
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-touch">bespoke-touch</a>
-
-      section
-        h2 Responsive Slides
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-scale">bespoke-scale</a>
+      section(class="fullscreen-image overlay hello")
+        h1 Hello guys !
+        p(class="author")
+          <a href="https://github.com/Mcdostone" target="_blank">@mcdostone (Yann Prono)</a>
 
       section
         h2 Bullet List
@@ -44,28 +31,15 @@ html
               keys(),
               touch(),
               bullets('li, .bullet')
-            ]);
-
-      section(data-bespoke-hash='named-route')
-        h2 Named Route
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a>
-        p Look up! This route has been named with a <em>'data-bespoke-hash'</em> attribute.
-
-      section.emphatic-text(data-bespoke-backdrop='emphatic')
-        h2 Emphatic Slide!
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-backdrop">bespoke-backdrop</a>
-
-      section
-        h2.bullet Just the beginning...
-        br
-        ul
-          li Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em>
-          li Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em>
-          li Edit JavaScript in <em>'src/scripts/main.js'</em>
-        br
-        ul
-          li
-            strong Enjoy! :)
-            a(href='http://twitter.com/markdalgleish')  -@markdalgleish
+            ]);    
+        
+      section 
+        pre
+          code.language-markup
+            :escape
+              <a href="https://github.com/Mcdostone/HTML-CSS" target="_blank">Mon super dépot github</a>
+              
+      section(class="fullscreen-image overlay bye")
+        h1 Any question ?
 
     script(src='build/build.js')

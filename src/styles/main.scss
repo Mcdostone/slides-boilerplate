@@ -1,4 +1,53 @@
 @import "prism/themes/prism-okaidia";
+@import "./animate";
+
+$background-color: white;
+$text-color: black;
+$default-font-size: 1.5em;
+$overlay-color: rgba(0,0,0,0.5);
+$progress-bar-color: #f14a29;
+
+body {
+  background: $background-color;
+}
+
+body * {
+  color: $text-color;
+	font-family: 'Lato', sans-serif;
+}
+
+li, p {
+  font-size: $default-font-size;
+	line-height: $default-font-size;
+}
+
+.instructions ul, .instructions p, .instructions li {
+	width: 100%;
+	text-align: left;
+}
+
+.author {
+	margin-top: 20px;
+  & * {
+    vertical-align: middle;
+  	font-style: italic;
+  	font-weight: 300;
+  	text-decoration: none;
+  	text-align: right;
+  }
+}
+
+.bespoke-slidenumber {
+  position: absolute;
+	bottom: 50px;
+	right: 50px;
+  z-index: 50;
+  font-size: 1.3em;
+}
+
+.bespoke-progress-bar{
+	background: $progress-bar-color;
+}
 
 .bespoke-slide {
   background: transparent;
@@ -14,9 +63,30 @@
   margin: 0;
 }
 
-.fullscreen-image {
-  left: 0;
+.fullscreen-image, .overlay:before {
+  bottom: 0;
   right: 0;
   top: 0;
   left: 0;
+}
+
+.overlay * {
+  color: white;
+  z-index: 10;
+}
+
+.overlay:before {
+  content: '';
+  z-index: -10;
+  position: absolute;
+  background: $overlay-color;
+}
+
+// Slides with image background
+.hello {
+  background-image: url(https://media.giphy.com/media/3osxYamKD88c6pXdfO/giphy.gif);
+}
+
+.bye {
+  background-image: url(https://media.giphy.com/media/KD5SK9O4hgZoI/giphy.gif);
 }

@@ -8,7 +8,6 @@ var pkg = require('./package.json'),
   connect = require('gulp-connect'),
   browserify = require('gulp-browserify'),
   uglify = require('gulp-uglify'),
-  jade = require('gulp-jade'),
   sass = require('gulp-sass'),
   autoprefixer = require('gulp-autoprefixer'),
   csso = require('gulp-csso'),
@@ -17,7 +16,13 @@ var pkg = require('./package.json'),
   opn = require('opn'),
   ghpages = require('gh-pages'),
   path = require('path'),
-  isDist = process.argv.indexOf('serve') === -1;
+  isDist = process.argv.indexOf('serve') === -1,
+  jade = require('jade'),
+  gulpJade = require('gulp-jade')
+
+jade.filters.escape = function(block) {
+  return require('html-strings').escape(block)
+}
 
 gulp.task('js', ['clean:js'], function() {
   return gulp.src('src/scripts/main.js')
@@ -32,7 +37,10 @@ gulp.task('js', ['clean:js'], function() {
 gulp.task('html', ['clean:html'], function() {
   return gulp.src('src/index.jade')
     .pipe(isDist ? through() : plumber())
-    .pipe(jade({ pretty: true }))
+    .pipe(gulpJade({
+      jade: jade,
+      pretty: true
+    }))
     .pipe(rename('index.html'))
     .pipe(gulp.dest('dist'))
     .pipe(connect.reload());
@@ -42,9 +50,9 @@ gulp.task('css', function() {
   return gulp.src('src/styles/main.scss')
     .pipe(plumber())
     .pipe(sass({
-      includePaths: ['./node_modules/', './bower_components/']
-    }))
-    .pipe(sass({ errLogToConsole: true }).on('error', sass.logError))
+      includePaths: ['./node_modules/', './bower_components/'],
+      errLogToConsole: true
+    }).on('error', sass.logError))
     .pipe(rename('build.css'))
     .pipe(gulp.dest('dist/build'))
     .pipe(connect.reload());
@@ -97,9 +105,9 @@ gulp.task('watch', function() {
   ], ['js']);
 });
 
-gulp.task('deploy', ['build'], function(done) {
+/*gulp.task('deploy', ['build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
-});
+});*/
 
 gulp.task('build', ['js', 'html', 'css', 'images']);
 

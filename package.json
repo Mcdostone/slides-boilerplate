@@ -9,8 +9,10 @@
     "bespoke-forms": "^1.0.0",
     "bespoke-hash": "^1.0.0",
     "bespoke-keys": "^1.0.0",
+    "bespoke-loop": "^1.0.0",
     "bespoke-progress": "^1.0.0",
     "bespoke-scale": "^1.0.0",
+    "bespoke-slidenumber": "^0.1.0",
     "bespoke-theme-cube": "^2.0.0",
     "bespoke-touch": "^1.0.0",
     "debowerify": "^0.7.1",
@@ -28,6 +30,7 @@
     "gulp-stylus": "^1.0.2",
     "gulp-uglify": "^0.3.1",
     "gulp-util": "^2.2.17",
+    "html-strings": "0.0.1",
     "insert-css": "^0.2.0",
     "opn": "^0.1.2",
     "through": "^2.3.4"
